@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { api, getToken, logout } from '@/lib/api';
+import Navbar from '@/components/Navbar';
+import { api, getToken } from '@/lib/api';
 
 type Summary = {
   totals: { projects: number; environments: number; servers: number; applications: number };
@@ -43,12 +44,8 @@ export default function DashboardPage() {
   return (
     <main className="min-h-screen bg-slate-100 p-8">
       <div className="mx-auto max-w-5xl">
-        <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-slate-900">Tableau de bord</h1>
-          <button onClick={logout} className="rounded bg-slate-800 px-4 py-2 text-sm text-white">
-            Déconnexion
-          </button>
-        </div>
+        <Navbar />
+        <h1 className="mb-4 text-2xl font-bold text-slate-900">Tableau de bord</h1>
         {error && <p className="text-red-600">{error}</p>}
         {!data && !error && <p className="text-slate-500">Chargement...</p>}
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
